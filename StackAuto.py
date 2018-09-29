@@ -27,30 +27,70 @@ class Pilha():
 
 class Transicao():
 
+  def __init__(self,transicao, estado, estados):
+    data = transicao.split()
+    self.estado = estado
+    self.novoEstado = data[1]
+    for state in estados:
+      if(self.novoEstado == state.getCod()):
+        self.novoEstado = state
+        break
+    self.valor = data[2]
+    self.novoValor = data[3]
+
   pass
 
-class Stado():
+class Estado():
+  ## inicializa o estado sem suas transições
+  def __init__(self, cod, fStates):
+    self.cod = cod
+    self.isFinal = False
+    for fS in fStates:
+      if(fS == self.cod):
+        self.isFinal = True
+        break
+    self.transicoes = []
 
+  def getCod(self):
+    return self.cod
   pass
 
 class Maquina():
 
   pass
 
-def lerArquivo(arquivo):
+def lerArquivo (arquivo):
+  arq = open(arquivo, 'r')
+  conteudo = arq.read().split('\n')
+  #print(conteudo)
+  alfaEntrada = conteudo[0].split()
+  #print(alfaEntrada)
+  alfaPilha = conteudo[1].split()
+  #print(alfaPilha)
+  conjEstados = conteudo[4].split()
+  #print(conjEstados)
+  iniEstado = conteudo[5].split()
+  #print(iniEstado)
+  transicoes = conteudo[7:]
+  #print(transicoes)
+  arq.close()
 
-  pass
+def main(arquivo, entrada):
+
+  estrutura = lerArquivo(arquivo)
 
 
-def main():
+  ## Testes da pilha
+  pil = Pilha('ola mundo')
 
-  pil = Pilha('ola Mundo')
+  print(pil.isTop(''))
 
-  print(pil.isTop('ola'))
-
-  pil.alterTop('ola Mund', '')
+  pil.alterTop('', '1')
 
   pil.print()
 
 if __name__ == "__main__":
-  main()
+  if(len(sys.argv) != 3):
+    print("Parametros insuficientes. Informe o nome do arquivo de entrada e a palavra de entrada")
+    sys.exit(1)
+  main(sys.argv[1], sys.argv[2])
