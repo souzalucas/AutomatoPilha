@@ -30,13 +30,23 @@ class Transicao():
   def __init__(self, transicao, estado, estados):
     data = transicao.split()
     self.estado = estado
-    self.novoEstado = data[1]
+    self.novoEstado = data[3]
+    self.entrada = data[1]
     for state in estados:
       if(self.novoEstado == state.getCod()):
         self.novoEstado = state
         break
-    self.valor = data[2]
-    self.novoValor = data[3]
+    self.PValor = data[2]
+    self.novoPValor = data[4]
+    pass
+
+  # Validacao da transicao
+  def validacao(self, entrada, pilha):
+    if(entrada.isTop(self.entrada)):
+      if(pilha.isTop(self.PValor)):
+        return true
+    return false
+    pass
 
   pass
 
@@ -56,6 +66,12 @@ class Estado():
   pass
 
 class Maquina():
+
+  def __init__(self, entrada, pilha, estado):
+    self.entrada = Pilha(entrada)
+    self.pilha = Pilha(pilha)
+    self.estado = estado
+    pass
 
   pass
 
