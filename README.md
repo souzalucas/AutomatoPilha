@@ -24,11 +24,11 @@ Cada autômato possui os atributos:
 
     Cada estado possui seu conjunto de transições (classe Transicao), que são geradas no método Estado.mount() de acordo com as transições dadas no formato de trabalho a partir da linha 7.
 
-    O primeiro laço de repetição trata de executar todos os autômatos, o mesmo opera enquanto estiver autômatos no vetor e enquanto nenhum resultado foi alcançado.
+O primeiro laço de repetição trata de executar todos os autômatos, o mesmo opera enquanto estiver autômatos no vetor e enquanto nenhum resultado foi alcançado.
     
-    Conforme o número de transições válidas no estado atual da máquina, o autômato em questão pode precisar ser duplicado para que todas as transições válidas sejam executadas.
+Conforme o número de transições válidas no estado atual da máquina, o autômato em questão pode precisar ser duplicado para que todas as transições válidas sejam executadas.
     
-    Se o autômato parou em um estado onde não existem transições válidas, o mesmo é removido do vetor de autômatos ou o algoritmo retorna (de acordo com a quantidade de máquinas que ainda têm para executar).
+Se o autômato parou em um estado onde não existem transições válidas, o mesmo é removido do vetor de autômatos ou o algoritmo retorna (de acordo com a quantidade de máquinas que ainda têm para executar).
 
 O algoritmo retorna:
 - 0 se entrar em um estado de aceitação ou se a pilha estiver vazia;
