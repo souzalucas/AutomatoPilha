@@ -214,14 +214,18 @@ def main(arquivo, entrada):
     tam = len(automatos)
     i = 0 # indice de trabalho
     while (i < tam):
+      # Recebe um vetor com os indices das transições validas para o momento
       trans = automatos[i].transicoes()
       if(len(trans) > 1):
+        # Duplica o automato, executa a duplicata e adiciona ela ao vetor de automatos
         for j in range (1, len(trans)):
           aux = automatos[i].duplica()
           res = aux.executa(trans[j:])
           automatos.append(aux)
       res = automatos[i].executa(trans)
-
+      # Analisa a saida da execução, finaliza a execução atual se necessario,
+      # finaliza o processo de executar os automatos
+      # ou simplesmente continua
       if(res == 2):
         concluido = 1
         break
@@ -240,6 +244,7 @@ def main(arquivo, entrada):
           break
       i += 1
   
+  # Retorna uma saida para o usuario de acordo com o resultado das execuções
   if(res == 2):
     print(0)
     automatos[i].print()
@@ -255,6 +260,7 @@ def main(arquivo, entrada):
 
 
 if __name__ == "__main__":
+  # cancela a execução se o numero de argumentos não for correto
   if(len(sys.argv) != 3):
     print("Parametros insuficientes. Informe o nome do arquivo de entrada e a palavra de entrada")
     sys.exit(1)
